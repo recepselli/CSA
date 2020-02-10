@@ -19,16 +19,16 @@ namespace CSA.Controllers
 
         [HttpGet("Prices")]
         [ProducesResponseType(typeof(TicketPrice), 200)]
-        public async Task<TicketPrice> GetPrices(string departureAirport, string arrivalAirport)
+        public async Task<IActionResult> GetPrices(string departureAirport, string arrivalAirport)
         {
-            return await calendarPricesRepository.GetPrices(departureAirport, arrivalAirport);
+            return new JsonResult(await calendarPricesRepository.GetPrices(departureAirport, arrivalAirport));
         }
 
         [HttpGet("Period")]
         [ProducesResponseType(typeof(Periods), 200)]
-        public async Task<Periods> GetPeriod(string departureAirport, string arrivalAirport)
+        public async Task<IActionResult> GetPeriod(string departureAirport, string arrivalAirport)
         {
-            return await calendarPricesRepository.GetPeriod(departureAirport, arrivalAirport);
+            return new JsonResult(await calendarPricesRepository.GetPeriod(departureAirport, arrivalAirport));
         }
     }
 }
